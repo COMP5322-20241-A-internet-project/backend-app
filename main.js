@@ -143,6 +143,50 @@ app.post("/login", (req, res) => {
   });
 });
 
+//check product review by product id
+app.get("/product/:productID/review", (req, res) => {
+  const { productID } = req.params;
+  const query = `SELECT 
+    p.ID AS id,
+    p.NAME AS title,
+    p.CATEGORY AS category,
+    p.PRICE AS price,
+    p.BRAND AS brand,
+    p.LIFESTAGE AS lifestage,
+    p.IMG AS img,
+    p.WEIGHT AS weight,
+    p.DESCRIPTION AS description,
+    p.INGREDIENTS AS ingredients,
+    JSON_ARRAYAGG(
+        JSON_OBJECT(
+            'id', pr.ID,
+            'username', u.USERNAME,
+            'comment', pr.COMMENT,
+            'date', pr.CREATE_DATE
+        )
+    ) AS reviews
+FROM 
+    PRODUCT p
+JOIN 
+    PRODUCT_REVIEW pr ON p.ID = pr.PRODUCT_ID
+JOIN 
+    USER u ON pr.USER_ID = u.ID
+WHERE 
+    p.ID = ?
+GROUP BY 
+    p.ID;`;
+  db.query(query, [productID], (err, results) => {
+    if (err) {
+      console.error("Error fetching pets:", err);
+      res.status(500).send("Server error");
+      return;
+    }
+    console.log(results);
+
+    res.status(200).json(results);
+  });
+});
+
 app.listen(port, () => {
   console.log(`Server running on port http://localhost:${port}`);
 });
