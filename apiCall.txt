@@ -1,0 +1,48 @@
+post /register
+{
+  "username": "test2",
+  "password": "test",
+  "address": "test",
+  "firstName":"test",
+  "phone":"12345678"
+}
+
+post /login
+{
+"username": "admin1",
+"password": "testpassword"
+}
+
+check product review by product id
+get /product/:productID/review
+
+post /product/:productID/review
+{
+    "userID":"1",
+    "comment":"test123"
+}
+
+get favorite products by user id
+get /user/:userID/favorite
+
+create favorite product
+/user/:userID/favorite
+{
+    "productID": "1"
+}
+
+delete favorite product by user id and product id
+delete /user/:userID/favorite/:productID
+
+create orders
+post /orders
+{
+    "userID": "1", 
+    "productID":"1", 
+    "quantity": "2", 
+    "address":"test", 
+    "phone":"12345678"
+}
+
+get orders by user id
+get /user/:userID/orders
