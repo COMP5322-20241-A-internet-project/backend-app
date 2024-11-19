@@ -66,7 +66,7 @@ CREATE TABLE ORDERS (
 );
 
 INSERT INTO USER (USERNAME, PASSWORD, ADDRESS, FIRST_NAME, LAST_NAME, EMAIL, PHONE) VALUES 
-('admin', 'admin', 'RM1010, Sing King Building ST.125, Hong Kong', 'Tai Man', 'Chan', 'taiman@email.com', '98765432');
+('admin', '$2a$10$AiIp.Wz9C/X37NGC9jN9ke2kIUpS9za8NX9Ap/keUppdy1qOb4dMC', 'RM1010, Sing King Building ST.125, Hong Kong', 'Tai Man', 'Chan', 'taiman@email.com', '98765432');
 
 INSERT INTO USER (USERNAME, PASSWORD, ADDRESS, FIRST_NAME, LAST_NAME, EMAIL, PHONE) VALUES 
 ('admin2', 'admin2', 'RM203, Tiu Yau House ST.23, KLN, Hong Kong', 'Ming Ting', 'Tseung', 'mingting@email.com', '65432198');

@@ -4,10 +4,17 @@ const bodyParser = require("body-parser");
 require("dotenv").config();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const cors = require('cors');
 
 const app = express();
 const port = 3000;
 
+const corsOptions = {
+  origin: 'http://localhost:5173',
+  optionsSuccessStatus: 200 // For legacy browsers
+  };
+  
+app.use(cors(corsOptions))
 app.use(bodyParser.json());
 
 // MySQL connection
