@@ -66,19 +66,19 @@ CREATE TABLE ORDERS (
 );
 
 INSERT INTO USER (USERNAME, PASSWORD, ADDRESS, FIRST_NAME, LAST_NAME, EMAIL, PHONE) VALUES 
-('admin', 'admin', 'RM1010, Sing King Building ST.125, Hong Kong', 'Tai Man', 'Chan', 'taiman@email.com', '98765432');
+('admin', '$2a$10$AiIp.Wz9C/X37NGC9jN9ke2kIUpS9za8NX9Ap/keUppdy1qOb4dMC', 'RM1010, Sing King Building ST.125, Hong Kong', 'Tai Man', 'Chan', 'taiman@email.com', '98765432');
 
 INSERT INTO USER (USERNAME, PASSWORD, ADDRESS, FIRST_NAME, LAST_NAME, EMAIL, PHONE) VALUES 
 ('admin2', 'admin2', 'RM203, Tiu Yau House ST.23, KLN, Hong Kong', 'Ming Ting', 'Tseung', 'mingting@email.com', '65432198');
 
 INSERT INTO PRODUCT (NAME, CATEGORY, PRICE, BRAND, LIFESTAGE, IMG, WEIGHT, DESCRIPTION, INGREDIENTS) VALUES 
-('product1', 'food', 35.00, 'Bunny', 'child', 'product1.img', 10.00, 'product1 description', 'product1 ingredients');
+('Young Rabbit Food', 'food', 35.00, 'Bunny Natures', 'child', 'product1.jpeg', 10.00, 'This food loaded with natural goodness for rabbit;- Made in the USA;- No artificial colors or preservatives;- Enriched with DHA as well as digestive probiotics;- Contains fruits, vegetables, wholesome seeds, grains, nuts, legumes and much more', 'Pumpkin Seeds, Coconut, Raisins, White Millet, Oats, Sun-Cured Timothy Hay, Wheat Millet, Pyridoxine Hydrochloride, Riboflavin Supplement, Zinc Proteinate, Manganese Proteinate, Copper Proteinate, Calcium Iodate, Yucca Schidigera Extract, Sodium Selenite.');
 
 INSERT INTO PRODUCT (NAME, CATEGORY, PRICE, BRAND, LIFESTAGE, IMG, WEIGHT, DESCRIPTION, INGREDIENTS) VALUES 
-('product2', 'food', 50.00, 'Kaytees', 'adult', 'product2.img', 12.00, 'product2 description', 'product2 ingredients');
+('Mature Rabbit Food', 'food', 50.00, 'Kaytees', 'adult', 'product1.jpeg', 12.00, 'product2 description', 'product2 ingredients');
 
 INSERT INTO PRODUCT (NAME, CATEGORY, PRICE, BRAND, LIFESTAGE, IMG, WEIGHT, DESCRIPTION, INGREDIENTS) VALUES 
-('product3', 'food', 105.00, 'Sun seeds', 'senior', 'product3.img', 15.00, 'product3 description', 'product3 ingredients');
+('Senior Rabbit Food', 'food', 105.00, 'Sun Seeds', 'senior', 'product1.jpeg', 15.00, 'product3 description', 'product3 ingredients');
 
 INSERT INTO PRODUCT_REVIEW (PRODUCT_ID, USER_ID, COMMENT) VALUES 
 (1, 1, 'product1 review');
