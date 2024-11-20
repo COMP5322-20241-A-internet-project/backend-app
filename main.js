@@ -149,6 +149,53 @@ app.post("/login", (req, res) => {
   });
 });
 
+//get all products
+app.get("/product", (req, res) => {
+  const query = "SELECT * FROM PRODUCT";
+  db.query(query, (err, results) => {
+    if (err) {
+      console.error("Error fetching pets:", err);
+      res.status(500).send("Server error");
+      return;
+    }
+    console.log(results);
+
+    res.status(200).json(results);
+  });
+});
+
+//get product by id
+app.get("/product/:productID", (req, res) => {
+  const { productID } = req.params;
+  const query = "SELECT * FROM PRODUCT WHERE ID = ?";
+  db.query(query, [productID], (err, results) => {
+    if (err) {
+      console.error("Error fetching pets:", err);
+      res.status(500).send("Server error");
+      return;
+    }
+    console.log(results);
+
+    res.status(200).json(results);
+  });
+});
+
+//get products by category
+app.get("/product/category/:category", (req, res) => {
+  const { category } = req.params;
+  const query = "SELECT * FROM PRODUCT WHERE CATEGORY = ?";
+  db.query(query, [category], (err, results) => {
+    if (err) {
+      console.error("Error fetching pets:", err);
+      res.status(500).send("Server error");
+      return;
+    }
+    console.log(results);
+
+    res.status(200).json(results);
+  });
+});
+
 //check product review by product id
 app.get("/product/:productID/review", (req, res) => {
   const { productID } = req.params;

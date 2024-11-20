@@ -13,6 +13,15 @@ post /login
 "password": "testpassword"
 }
 
+get all products
+/product
+
+get product by id
+/product/:productID
+
+get products by category
+/product/category/:category
+
 check product review by product id
 get /product/:productID/review
 
