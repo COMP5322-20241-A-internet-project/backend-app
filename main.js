@@ -4,17 +4,17 @@ const bodyParser = require("body-parser");
 require("dotenv").config();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const cors = require('cors');
+const cors = require("cors");
 
 const app = express();
 const port = 3000;
 
 const corsOptions = {
-  origin: 'http://localhost:5173',
-  optionsSuccessStatus: 200 // For legacy browsers
-  };
-  
-app.use(cors(corsOptions))
+  origin: "http://localhost:5173",
+  optionsSuccessStatus: 200, // For legacy browsers
+};
+
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
 // MySQL connection
@@ -345,12 +345,12 @@ app.delete("/user/:userID/favorite/:productID", (req, res) => {
 
 // create orders
 app.post("/orders", (req, res) => {
-  const { userID, productID, quantity, address, phone } = req.body;
+  const { userID, productOrders, totalPrice, address, phone } = req.body;
   const query =
-    "INSERT INTO ORDERS (PRODUCT_ID, USER_ID, QUANTITY, ADDRESS, PHONE, STATUS) VALUES (?, ?, ?, ?, ?, 'pending')";
+    "INSERT INTO ORDERS (PRODUCT_ORDERS, USER_ID, TOTAL_PRICE, ADDRESS, PHONE, STATUS) VALUES (?, ?, ?, ?, ?, 'pending')";
   db.query(
     query,
-    [productID, userID, quantity, address, phone],
+    [productOrders, userID, totalPrice, address, phone],
     (err, results) => {
       if (err) {
         console.error("Error fetching pets:", err);
@@ -366,27 +366,7 @@ app.post("/orders", (req, res) => {
 // get orders by user id
 app.get("/user/:userID/orders", (req, res) => {
   const { userID } = req.params;
-  const query = `SELECT 
-    o.ID AS id,
-    p.NAME AS title,
-    p.CATEGORY AS category,
-    p.PRICE AS price,
-    p.BRAND AS brand,
-    p.LIFESTAGE AS lifestage,
-    p.IMG AS img,
-    p.WEIGHT AS weight,
-    p.DESCRIPTION AS description,
-    p.INGREDIENTS AS ingredients,
-    o.QUANTITY AS quantity,
-    o.ADDRESS AS address,
-    o.PHONE AS phone,
-    o.STATUS AS status
-FROM
-    ORDERS o
-JOIN
-    PRODUCT p ON o.PRODUCT_ID = p.ID
-WHERE
-    o.USER_ID = ?;`;
+  const query = `SELECT * FROM ORDERS WHERE USER_ID = ?;`;
   db.query(query, [userID], (err, results) => {
     if (err) {
       console.error("Error fetching pets:", err);

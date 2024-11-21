@@ -47,8 +47,8 @@ create orders
 post /orders
 {
     "userID": "1", 
-    "productID":"1", 
-    "quantity": "2", 
+    "productOrders":"{\"1\":2, \"2\":2}", 
+    "totalPrice": "123.00", 
     "address":"test", 
     "phone":"12345678"
 }
