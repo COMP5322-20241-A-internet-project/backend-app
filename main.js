@@ -345,12 +345,12 @@ app.delete("/user/:userID/favorite/:productID", (req, res) => {
 
 // create orders
 app.post("/orders", (req, res) => {
-  const { userID, productOrders, totalPrice, address, phone } = req.body;
+  const { userID, productOrders, totalPrice, address, firstname, lastname } = req.body;
   const query =
-    "INSERT INTO ORDERS (PRODUCT_ORDERS, USER_ID, TOTAL_PRICE, ADDRESS, PHONE, STATUS) VALUES (?, ?, ?, ?, ?, 'pending')";
+    "INSERT INTO ORDERS (PRODUCT_ORDERS, USER_ID, TOTAL_PRICE, ADDRESS, FIRST_NAME, LAST_NAME, STATUS) VALUES (?, ?, ?, ?, ?, ?,'pending')";
   db.query(
     query,
-    [productOrders, userID, totalPrice, address, phone],
+    [productOrders, userID, totalPrice, address, firstname, lastname],
     (err, results) => {
       if (err) {
         console.error("Error fetching pets:", err);
