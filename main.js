@@ -303,9 +303,7 @@ app.post("/user/:userID/favorite", (req, res) => {
   // Check if the product already exists in user favorite list
   const checkProductQuery =
     "SELECT * FROM FAVOURITE WHERE USER_ID = ? AND PRODUCT_ID = ?";
-  let resu;
   db.query(checkProductQuery, [userID, productID], (err, results) => {
-    resu = results;
     if (err) {
       console.error("Error checking product:", err);
       res.status(500).send("Server error");
