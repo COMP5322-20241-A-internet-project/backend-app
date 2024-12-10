@@ -311,6 +311,7 @@ app.post("/user/:userID/favorite", (req, res) => {
     }
 
     if (results.length > 0) {
+      console.log("Product already exists");
       res.status(400).send("Product already exists");
       return;
     }
@@ -323,6 +324,7 @@ app.post("/user/:userID/favorite", (req, res) => {
         res.status(500).send("Server error");
         return;
       }
+      console.log("Product added to favorite");
       res.status(201).json("product added to favorite");
     });
   });
